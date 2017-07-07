@@ -18,7 +18,6 @@ const paths = {
   js      : "js/**/*.js",
   mainJS  : "js/app.js",
   jquery  : "js/vendor/jquery-3.2.1.min.js",
-  jsMaterialize  : "js/vendor/materialize.min.js",
   sass    : "scss/**/*.scss",
   mainSass: "scss/main.scss"
 };
@@ -29,7 +28,6 @@ const sources = {
   js    : config.source + paths.assets + paths.js,
   rootJS: config.source + paths.assets + paths.mainJS,
   jquery: config.source + paths.assets + paths.jquery,
-  materialize: config.source + paths.assets + paths.jsMaterialize,
   sass  : config.source + paths.assets + paths.sass,
   rootSass: config.source + paths.assets + paths.mainSass
 };
