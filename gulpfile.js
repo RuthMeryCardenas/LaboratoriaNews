@@ -36,14 +36,14 @@ const sources = {
 
 gulp.task('sass', function () {
   gulp.src(sources.rootSass)
-  .pipe(sass().on("error", sass.logError)) //sass({outputStyle: "compressed"})
+  .pipe(sass().on("error", sass.logError))
   .pipe(gulp.dest(config.dist + paths.assets + "css"));
 });
 
 gulp.task('js', function () {
   // return gulp.src([sources.jquery, sources.materialize, sources.assets + "js/utils/*.js", sources.assets + "js/components/*.js", sources.rootJS])
-  return gulp.src(sources.rootJS)
-  // .pipe(concat('app.js'))
+  return gulp.src([sources.jquery, sources.rootJS])
+  .pipe(concat('app.js'))
   .pipe(browserify())
   .pipe(rename("bundle.js"))
   .pipe(addsrc(sources.jquery))
@@ -54,9 +54,9 @@ gulp.task('html', () => {
   gulp.src(sources.html).pipe(gulp.dest(config.dist));
 });
 
-gulp.task('start', ['html', 'sass', 'js']);
+gulp.task('init', ['html', 'sass', 'js']);
 
-gulp.task('serve', function () {
+gulp.task('watch', function () {
     gulp.watch(sources.html, ["html"]);
     gulp.watch(sources.sass, ["sass"]);
     gulp.watch(sources.js, ["js"]);

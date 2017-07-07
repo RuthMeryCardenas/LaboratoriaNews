@@ -1,1 +1,3 @@
-console.log("Cargando bundle.js");
+$( _ => {
+  console.log("Cargando bundle.js");
+});
