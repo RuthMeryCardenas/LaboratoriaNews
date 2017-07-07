@@ -34,22 +34,30 @@ const sources = {
   rootSass: config.source + paths.assets + paths.mainSass
 };
 
+gulp.task('sass', function () {
+  gulp.src(sources.rootSass)
+  .pipe(sass().on("error", sass.logError)) //sass({outputStyle: "compressed"})
+  .pipe(gulp.dest(config.dist + paths.assets + "css"));
+});
+
+gulp.task('js', function () {
+  // return gulp.src([sources.jquery, sources.materialize, sources.assets + "js/utils/*.js", sources.assets + "js/components/*.js", sources.rootJS])
+  return gulp.src(sources.rootJS)
+  // .pipe(concat('app.js'))
+  .pipe(browserify())
+  .pipe(rename("bundle.js"))
+  .pipe(addsrc(sources.jquery))
+  .pipe(gulp.dest(config.dist + paths.assets + "js"))
+});
+
 gulp.task('html', () => {
   gulp.src(sources.html).pipe(gulp.dest(config.dist));
 });
 
-gulp.task('sass', function () {
-    gulp.src(sources.rootSass)
-        .pipe(sass().on("error", sass.logError)) //sass({outputStyle: "compressed"})
-        .pipe(gulp.dest(config.dist + paths.assets + "css"));
-});
+gulp.task('start', ['html', 'sass', 'js']);
 
-gulp.task('js', function () {
-    // return gulp.src([sources.jquery, sources.materialize, sources.assets + "js/utils/*.js", sources.assets + "js/components/*.js", sources.rootJS])
-    return gulp.src(sources.rootJS)
-        // .pipe(concat('app.js'))
-        .pipe(browserify())
-        .pipe(rename("bundle.js"))
-        .pipe(addsrc(sources.jquery))
-        .pipe(gulp.dest(config.dist + paths.assets + "js"))
+gulp.task('serve', function () {
+    gulp.watch(sources.html, ["html"]);
+    gulp.watch(sources.sass, ["sass"]);
+    gulp.watch(sources.js, ["js"]);
 });

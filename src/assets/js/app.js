@@ -1,1 +1,1 @@
-console.log("Cargando APP.js");
+console.log("Cargando bundle.js");
