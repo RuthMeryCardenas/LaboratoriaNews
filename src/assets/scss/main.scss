@@ -1,4 +1,8 @@
-$color1:#ffffff;
-.color {
-  color: $color1;
+@import "partials/_grid";
+@import "partials/_font";
+@import "partials/_colors";
+
+body {
+  font-family: $mainFont;
+  font-size:   $mainSize;
 }
