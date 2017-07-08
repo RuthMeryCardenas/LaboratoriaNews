@@ -2,7 +2,93 @@
 @import "partials/_font";
 @import "partials/_colors";
 
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: $mainFont;
   font-size:   $mainSize;
+}
+.wrapper {
+  padding: 2rem;
+}
+.content {
+  background-color: red;
+  &__mainNews {
+    background-color: blue;
+  }
+}
+.otherNews {
+  &__name {
+    padding-top: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    span {
+      border-bottom: 5px solid $mainColor;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+}
+.news {
+  background-color:green;
+  color: $tertiaryColor;
+  padding: 1rem;
+  position: relative;
+  &__image {
+    line-height: 0;
+    img {
+      width: 100%;
+    }
+  }
+}
+.news-main {
+  @extend .news;
+  &__image {
+    @extend .news__image;
+  }
+  &__content {
+    bottom: 0;
+    padding: 3rem;
+    position: absolute;
+    &__title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      letter-spacing: 0.2rem;
+      width: 65%;
+    }
+    &__body {
+      font-size: 0.75rem;
+      width: 50%;
+    }
+  }
+}
+.news-secondary {
+  @extend .news;
+  &__image {
+    @extend .news__image;
+  }
+  &__content {
+    background-color: $secondaryColor;
+    font-size: 1.15rem;
+    height: 100px;
+    padding: 1.5rem 1.5rem 0;
+    }
+}
+.news-vertical {
+  @extend .news;
+  display: flex;
+  align-items: stretch;
+  &__image {
+    @extend .news__image;
+    width: 40%;
+  }
+  &__content {
+    @extend .news-secondary__content;
+    height: auto;
+    width: 60%;
+    }
 }
