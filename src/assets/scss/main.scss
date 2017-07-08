@@ -13,12 +13,41 @@ body {
   font-size:   $mainSize;
 }
 .wrapper {
-  padding: 2rem;
+  padding: 0 2rem;
 }
-.content {
-  background-color: red;
-  &__mainNews {
-    background-color: blue;
+.icon {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  &__image {
+    margin-right: 0.5rem;
+  }
+}
+.brand {
+  margin-left: 37.5%;
+  &__image {
+    width: 100%;
+  }
+}
+.header{
+  padding: 1rem 1rem 0.5rem;
+  &__icons {
+    border-bottom: 1px solid gray;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.menu {
+  background-color: $mainColor;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-around;
+  padding: 0.75rem 3rem;
+  &__item {
+    a{
+      color: $tertiaryColor;
+      text-decoration: none;
+    }
   }
 }
 .otherNews {
@@ -34,9 +63,8 @@ body {
   }
 }
 .news {
-  background-color:green;
   color: $tertiaryColor;
-  padding: 1rem;
+  padding: 0.5rem;
   position: relative;
   &__image {
     line-height: 0;
